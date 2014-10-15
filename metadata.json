@@ -22,6 +22,10 @@
     {
       "name": "puppetlabs/firewall",
       "version_requirement": ">=1.1.3"
+    },
+    {
+      "name": "cyberious/windows_puppet"
+      "version_requirement": ">=0.1.0"
     }
   ]
 }
