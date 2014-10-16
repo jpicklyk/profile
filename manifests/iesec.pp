@@ -5,7 +5,7 @@ class profile::iesec (
     validate_bool($admin)
     validate_bool($users)
         
-    class {'iesec':
+    class {'::iesec':
       admin_enabled => $admin,
       users_enabled  => $users,
     }
