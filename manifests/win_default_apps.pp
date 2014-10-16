@@ -38,7 +38,7 @@ class profile::win_default_apps {
   
   # Ensure Google Chrome is installed
   package { 'GoogleChrome':
-    ensure   => latest,
+    ensure   => present,
     provider => 'chocolatey',
     require  => Class['chocolatey_sw']
   }
