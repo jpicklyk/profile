@@ -34,6 +34,10 @@
     {
       "name": "jonnyx/iesec"
       "version_requirement": ">=0.0.1"
-    }
+    },
+    {
+      "name": "ceritsc/chocolatey_sw"
+      "version_requirement": ">=0.9.1"
+    }    
   ]
 }
