@@ -26,6 +26,10 @@
     {
       "name": "cyberious/windows_puppet"
       "version_requirement": ">=0.1.0"
+    },
+    {
+      "name": "ceritsc/chocolatey_sw"
+      "version_requirement": ">=0.9.1"
     }
   ]
 }
