@@ -6,7 +6,14 @@ class profile::base {
     
     #Ensure Notepad++ is installed
     package { 'notepadplusplus.install':
-      ensure => present,
+      ensure => latest,
+      provider => 'chocolatey',
+      require => Class['chocolatey_sw']
+    }
+    
+    #Ensure wireshark is installed
+    package { 'wireshark':
+      ensure => latest,
       provider => 'chocolatey',
       require => Class['chocolatey_sw']
     }
