@@ -5,7 +5,7 @@ class profile::base {
     include chocolatey_sw
     
     #Ensure Notepad++ is installed
-    package { 'notepadplusplus':
+    package { 'notepadplusplus.install':
       ensure => present,
       provider => 'chocolatey',
       require => Class['chocolatey_sw']
