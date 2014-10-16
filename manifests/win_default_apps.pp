@@ -3,35 +3,35 @@ class profile::win_default_apps {
 
   # Ensure Notepad++ is installed
   package { 'notepadplusplus.install':
-    ensure   => latest,
+    ensure   => present,
     provider => 'chocolatey',
     require  => Class['chocolatey_sw']
   }
 
   # Ensure wireshark is installed
   package { 'wireshark':
-    ensure   => latest,
+    ensure   => present,
     provider => 'chocolatey',
     require  => Class['chocolatey_sw']
   }
 
   # Ensure bginfo is installed
   package { 'bginfo':
-    ensure   => latest,
+    ensure   => present,
     provider => 'chocolatey',
     require  => Class['chocolatey_sw']
   }
 
   # Ensure sysinternals is installed
   package { 'sysinternals':
-    ensure   => latest,
+    ensure   => present,
     provider => 'chocolatey',
     require  => Class['chocolatey_sw']
   }
   
   # Ensure 7zip is installed
   package { '7zip.install':
-    ensure   => latest,
+    ensure   => present,
     provider => 'chocolatey',
     require  => Class['chocolatey_sw']
   }
@@ -45,7 +45,7 @@ class profile::win_default_apps {
   
   # Ensure WinDirStat is installed
   package { 'windirstat':
-    ensure   => latest,
+    ensure   => present,
     provider => 'chocolatey',
     require  => Class['chocolatey_sw']
   }
