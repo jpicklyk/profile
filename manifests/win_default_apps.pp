@@ -15,13 +15,6 @@ class profile::win_default_apps {
     require  => Class['chocolatey_sw']
   }
 
-  # Ensure bginfo is installed
-  package { 'bginfo':
-    ensure   => present,
-    provider => 'chocolatey',
-    require  => Class['chocolatey_sw']
-  }
-
   # Ensure sysinternals is installed
   package { 'sysinternals':
     ensure   => present,
