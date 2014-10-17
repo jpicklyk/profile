@@ -7,7 +7,11 @@ class profile::win_default_apps(
   package { $applications:
     ensure   => present,
     provider => 'chocolatey',
-    require  => Class['chocolatey_sw']
+    require  => Class['chocolatey_sw'],
+  }
+  
+  reboot { 'after':
+    subscribe => Package['PowerShell'],
   }
 
 }
