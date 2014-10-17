@@ -9,6 +9,10 @@ class profile::domain_member (
     domain        => $domain,
     username      => $username,
     password      => $password,
-    join_options  => $options,
+    join_options  => $options
+  }
+  
+  reboot { 'after':
+    subscribe => Class['domain_membership']
   }
 }
