@@ -10,7 +10,7 @@ class profile::win_default_apps(
     require  => Class['chocolatey_sw'],
   }
   
-  reboot { 'after':
+  reboot { 'win_default_apps::after':
     subscribe => Package['PowerShell'],
   }
 

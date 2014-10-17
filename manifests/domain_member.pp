@@ -10,7 +10,7 @@ class profile::domain_member (
     password      => $password,
   }
   
-  reboot { 'after':
+  reboot { 'domain_member::after':
     subscribe => Class['domain_membership']
   }
 }
