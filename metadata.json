@@ -38,6 +38,10 @@
     {
       "name": "ceritsc/chocolatey_sw"
       "version_requirement": ">=0.9.1"
+    },
+    {
+      "name": "trlinkin/domain_membership"
+      "version_requirement": ">=1.0.0"
     }    
   ]
 }
