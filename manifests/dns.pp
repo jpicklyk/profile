@@ -1,7 +1,7 @@
 class profile::dns (
   $forwarders     = hiera('profile::dns::forwarders', "'8.8.8.8','8.8.4.4'"),
   $zonename  = hiera('windows_ad::domainname'),
-  $dynamicupdate  = hiera('profile::dns::dynamicupdate', 2)
+  $dynamicupdate  = hiera('profile::dns::dynamicupdate', 1)
 ){
   
   windows_dns::forwarder {'Google forwarder':
