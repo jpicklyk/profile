@@ -1,5 +1,5 @@
 class profile::dns (
-  $forwarders     = hiera('profile::dns::forwarders', ['8.8.8.8','8.8.4.4']),
+  $forwarders     = hiera('profile::dns::forwarders', "'8.8.8.8','8.8.4.4'"),
   $zonename  = hiera('windows_ad::domainname'),
   $dynamicupdate  = hiera('profile::dns::dynamicupdate', 2)
 ){
