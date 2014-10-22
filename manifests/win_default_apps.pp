@@ -5,7 +5,7 @@ class profile::win_default_apps(
   include chocolatey_sw
   
   package { $applications:
-    ensure   => present,
+    ensure   => installed,
     provider => 'chocolatey',
     require  => Class['chocolatey_sw'],
   }
