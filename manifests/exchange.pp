@@ -4,7 +4,7 @@ class profile::exchange(
 ){
   
   class { 'exchange::prerequisites':
-    roles => $exrole,
+    exrole => $exrole,
   }
   
 }
