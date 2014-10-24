@@ -3,7 +3,7 @@ class profile::domain_member (
   $username   = hiera('profile::domain_member::username'),
   $password   = hiera('profile::domain_member::password')
 ) {
-  
+  notify {'Applying profile: domain_membership':}
   class {'::domain_membership':
     domain        => $domain,
     username      => $username,

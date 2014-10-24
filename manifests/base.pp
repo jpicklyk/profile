@@ -1,4 +1,5 @@
 class profile::base {
+  notify {'Applying profile: base':}
   if $operatingsystem == 'Windows' {
     contain profile::iesec
     contain windows_puppet

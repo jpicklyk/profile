@@ -3,7 +3,7 @@ class profile::win_default_apps(
   ) {
     
   include chocolatey_sw
-  
+  notify {'Applying profile: win_default_apps':}
   package { $applications:
     ensure   => installed,
     provider => 'chocolatey',
