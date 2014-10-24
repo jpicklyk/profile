@@ -14,6 +14,10 @@ class profile::powershell(
       command => "c:\\windows\\system32\\wusa.exe ${share}${filename} /quiet /norestart",
       onlyif => "c:\\windows\\system32\\WindowsPowershell\\v1.0\\powershell.exe -executionpolicy remotesigned if(\$PSVersionTable -and (\$PSVersionTable.PSVersion -ge [Version]'4.0')){exit 1}"
       
+    }
+    
+    reboot{'after powershell':
+      subscribe => Exec['powershell4']
     } 
   }
 }
