@@ -10,10 +10,14 @@ class profile::powershell(
 #      source => "${share}${filename}",    
 #      install_options => ['/quiet','/norestart'],
 #    }
+    reboot{'before powershell':
+      when  => pending,
+    }
+    
     exec {'powershell4':
       command => "c:\\windows\\system32\\wusa.exe ${share}${filename} /quiet /norestart",
-      onlyif => "c:\\windows\\system32\\WindowsPowershell\\v1.0\\powershell.exe -executionpolicy remotesigned if(\$PSVersionTable -and (\$PSVersionTable.PSVersion -ge [Version]'4.0')){exit 1}"
-      
+      onlyif  => "c:\\windows\\system32\\WindowsPowershell\\v1.0\\powershell.exe -executionpolicy remotesigned if(\$PSVersionTable -and (\$PSVersionTable.PSVersion -ge [Version]'4.0')){exit 1}"
+      require => Reboot['before powershell']
     }
     
     reboot{'after powershell':
