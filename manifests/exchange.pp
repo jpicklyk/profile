@@ -7,5 +7,5 @@ class profile::exchange(
     exrole    => $exrole,
     directory => $share,
   }
-  
+  contain exchange::prerequisites
 }
