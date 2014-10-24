@@ -11,8 +11,9 @@ class profile::powershell(
 #      install_options => ['/quiet','/norestart'],
 #    }
     exec {'powershell4':
-      command => "cmd /c 'c:\\windows\\system32\\wusa.exe ${share}${filename} /quiet /norestart'",
-      onlyif => "$::systemroot\\system32\\WindowsPowershell\\v1.0\\powershell.exe -executionpolicy remotesigned if(\$PSVersionTable -and (\$PSVersionTable.PSVersion -ge [Version]'4.0')){exit 1}"
+      command => "c:\\windows\\system32\\wusa.exe ${share}${filename} /quiet /norestart",
+      onlyif => "cmd /c '$::systemroot\\system32\\WindowsPowershell\\v1.0\\powershell.exe -executionpolicy remotesigned if(\$PSVersionTable -and (\$PSVersionTable.PSVersion -ge [Version]'4.0')){exit 1}'"
+      
     } 
   }
 }
