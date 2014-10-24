@@ -1,9 +1,11 @@
 class profile::base {
   if $operatingsystem == 'Windows' {
-    include profile::iesec
-    include windows_puppet
-    include profile::win_default_apps
-    include profile::software_share
+    contain profile::iesec
+    contain windows_puppet
+    contain profile::win_default_apps
+    contain profile::software_share
+    
+    Class['profile::iesec'] -> Class['windows_puppet'] -> Class['profile::win_default_apps'] -> Class['profile::software_share']
     
   } elsif $operatingsystem == 'Ubuntu' {
     
