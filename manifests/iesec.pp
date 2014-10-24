@@ -9,4 +9,5 @@ class profile::iesec (
       admin_enabled => $admin,
       users_enabled  => $users,
     }
+    contain ::iesec
 }
