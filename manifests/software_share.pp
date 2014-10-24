@@ -10,7 +10,7 @@ class profile::software_share (
   $credential = "(New-Object System.Management.Automation.PsCredential(\'${account}\', (ConvertTo-SecureString \'${key}\' -AsPlainText -Force)))"
   exec { 's-drive':
     command   => "New-PSDrive -Name ${drive} -PSProvider ${psprovider} -Root ${root} -Credential ${credential} -Persist",
-    onlyif    => "if(Test-Path ${drive}){exit 1} else {}",
+    onlyif    => "if(Test-Path ${drive}:){exit 1} else {}",
     provider  => powershell,  
   }
 }
