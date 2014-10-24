@@ -3,10 +3,16 @@ class profile::powershell(
   $share    = hiera('profile::powershell::share')
 ){
   if($kernelversion =~ /^6\.1/) {
-    package { 'Microsoft Windows Management Framework 4.0 (KB2819745)':
-      ensure => 'installed',
-      source => "${share}${filename}",    
-      install_options => ['/quiet','/norestart'],
+    notify{'Applying profile: powershell':}
+    ### MSU file are not supported with package yet ###
+#    package { 'Microsoft Windows Management Framework 4.0 (KB2819745)':
+#      ensure => 'installed',
+#      source => "${share}${filename}",    
+#      install_options => ['/quiet','/norestart'],
+#    }
+    exec {'powershell4':
+      command => "c:\\windows\\system32\\wusa.exe ${share}${filename} /quiet /norestart",
+      onlyif => "powershell -executionpolicy remotesigned if(\$PSVersionTable -and (\$PSVersionTable.PSVersion -ge [Version]'4.0')){exit 1}"
     } 
   }
 }

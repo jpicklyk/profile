@@ -10,17 +10,17 @@ class profile::win_default_apps(
     require  => Class['chocolatey_sw'],
   }
   
-  if($kernelversion =~ /^6\.0|^6\.1/) {
-    #Update powershell to version 4
-    package { 'PowerShell':
-      ensure    => installed,
-      provider  => 'chocolatey',
-      require   => Class['chocolatey_sw'],
-    }
-    reboot { 'win_default_apps::after':
-      subscribe => Package['PowerShell'],
-    }
-  
-  }
+#  if($kernelversion =~ /^6\.0|^6\.1/) {
+#    #Update powershell to version 4
+#    package { 'PowerShell':
+#      ensure    => installed,
+#      provider  => 'chocolatey',
+#      require   => Class['chocolatey_sw'],
+#    }
+#    reboot { 'win_default_apps::after':
+#      subscribe => Package['PowerShell'],
+#    }
+#  
+#  }
 
 }
