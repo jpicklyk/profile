@@ -23,5 +23,5 @@ class profile::exchange(
     isopath => "${share}${version}\\${filename}"
   }
   contain exchange::prerequisites  
-  contain windows_isos
+  
 }
