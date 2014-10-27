@@ -21,5 +21,5 @@ class profile::exchange(
     ensure  => present,
     isopath => "${share}${version}\\${filename}"
   }
-  #contain windows_isos
+  contain windows_isos
 }
