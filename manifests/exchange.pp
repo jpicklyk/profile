@@ -6,8 +6,6 @@ class profile::exchange(
   $orgname      = hiera('profile::exchange::orgname', 'Test Organization')
 ){
   notify {'Applying profile: exchange':}
-  contain exchange::prerequisites
-  contain exchange::install
   
   $sp = $servicepack ? {
     1       => 'sp1',
@@ -25,6 +23,6 @@ class profile::exchange(
     path      => "${share}${version}\\${sp}\\",
     orgname   => $orgname,
   }
-    
-  
+  contain exchange::prerequisites  
+  contain exchange::install
 }
