@@ -8,15 +8,13 @@ class profile::software_share (
 ) {
   
   
-#  $credential = "(New-Object System.Management.Automation.PsCredential(\'${account}\', (ConvertTo-SecureString \'${key}\' -AsPlainText -Force)))"
-#  $command = $kernelversion ? {
-#    /^6\.1/ => "\$net = new-object -ComObject WScript.Network; \$net.MapNetworkDrive('${drive}:', '${root}', \$false, '${account}', '${key}')",
-#    default => "New-PSDrive -Name ${drive} -PSProvider ${psprovider} -Root ${root} -Credential ${credential} -Persist",
-#  }
-  $command = "cmdkey /add:${root} /user:${account} /pass:${key};net use ${drive}: '\\\\${root}\\${sharename}'"
-  
+  exec {'Save Creds':
+    command   => "cmdkey /add:${root} /user:${account} /pass:${key}",
+    unless    => "if( ((cmdkey.exe /list | select-string '${root}') -replace \".*[:=]\" -replace \"\s\") -contains '${root}' ){exit 1}",
+    provider  => powershell,
+  } ->
   exec { 's-drive':
-    command   => $command,
+    command   => "net use ${drive}: '\\\\${root}\\${sharename}'",
     onlyif    => "if(Test-Path ${drive}:){exit 1}",
     provider  => powershell,  
   }
