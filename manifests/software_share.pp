@@ -7,15 +7,16 @@ class profile::software_share (
 ) {
   
   
-  $credential = "(New-Object System.Management.Automation.PsCredential(\'${account}\', (ConvertTo-SecureString \'${key}\' -AsPlainText -Force)))"
-  $command = $kernelversion ? {
-    /^6\.1/ => "\$net = new-object -ComObject WScript.Network; \$net.MapNetworkDrive('${drive}:', '${root}', \$false, '${account}', '${key}')",
-    default => "New-PSDrive -Name ${drive} -PSProvider ${psprovider} -Root ${root} -Credential ${credential} -Persist",
-  }
+#  $credential = "(New-Object System.Management.Automation.PsCredential(\'${account}\', (ConvertTo-SecureString \'${key}\' -AsPlainText -Force)))"
+#  $command = $kernelversion ? {
+#    /^6\.1/ => "\$net = new-object -ComObject WScript.Network; \$net.MapNetworkDrive('${drive}:', '${root}', \$false, '${account}', '${key}')",
+#    default => "New-PSDrive -Name ${drive} -PSProvider ${psprovider} -Root ${root} -Credential ${credential} -Persist",
+#  }
+  $command = "cmdkey /add:${root} /user:${account} /pass:${key};net use ${drive}: ${root}"
   
   exec { 's-drive':
     command   => $command,
-    onlyif    => "if(Test-Path ${drive}:){exit 1} else {}",
+    onlyif    => "if(Test-Path ${drive}:){exit 1}",
     provider  => powershell,  
   }
 }
