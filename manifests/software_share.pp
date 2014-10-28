@@ -13,7 +13,7 @@ class profile::software_share (
 #    /^6\.1/ => "\$net = new-object -ComObject WScript.Network; \$net.MapNetworkDrive('${drive}:', '${root}', \$false, '${account}', '${key}')",
 #    default => "New-PSDrive -Name ${drive} -PSProvider ${psprovider} -Root ${root} -Credential ${credential} -Persist",
 #  }
-  $command = "cmdkey /add:${root} /user:${account} /pass:${key};net use ${drive}: '${root}\\${name}'"
+  $command = "cmdkey /add:${root} /user:${account} /pass:${key};net use ${drive}: '\\\\${root}\\${name}'"
   
   exec { 's-drive':
     command   => $command,
