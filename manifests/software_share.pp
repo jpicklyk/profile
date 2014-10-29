@@ -8,11 +8,11 @@ class profile::software_share (
 ) {
   
   
-#  exec {'Save Creds':
-#    command   => "cmdkey /add:${root} /user:${account} /pass:${key}",
-#    onlyif    => "if( ((cmdkey.exe /list | select-string 'target') -replace \".*[:=]\" -replace \"\s\") -contains '${root}' ){exit 1}",
-#    provider  => powershell,
-#  } ->
+  exec {'Save Creds':
+    command   => "cmdkey /add:${root} /user:${account} /pass:${key}",
+    onlyif    => "if( ((cmdkey.exe /list | select-string 'target') -replace \".*[:=]\" -replace \"\s\") -contains '${root}' ){exit 1}",
+    provider  => powershell,
+  } ->
   exec { 's-drive':
     command   => "net use ${drive}: '\\\\${root}\\${sharename}' /u:${account} $key",
     onlyif    => "if(Test-Path ${drive}:){exit 1}",
