@@ -12,6 +12,7 @@ class profile::domain_member (
   
   exec {"Service Change":
     command   => "\$service = gwmi win32_service -computer localhost -filter \"name='puppet'\";\$service.change(\$null,\$null,\$null,\$null,\$null,\$null,\"${username}@${domain}\",\"${password}\")",
+    onlyif    => "if( (Get-WmiObject win32_service | where {\$_.Name -EQ 'puppet'}).StartName -eq '${username}@${domain}'){exit 1}",
     provider  => powershell,
   }
   
