@@ -10,7 +10,7 @@ class profile::software_share (
   
   exec {'Save Creds':
     command   => "cmdkey /add:${root} /user:${account} /pass:${key}",
-    unless    => "if( ((cmdkey.exe /list | select-string '${root}') -replace \".*[:=]\" -replace \"\s\") -contains '${root}' ){exit 1}",
+    unless    => "if( ((cmdkey.exe /list | select-string 'target') -replace \".*[:=]\" -replace \"\s\") -contains '${root}' ){exit 1}",
     provider  => powershell,
   } ->
   exec { 's-drive':
