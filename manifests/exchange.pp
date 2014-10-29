@@ -6,7 +6,7 @@ class profile::exchange(
   $orgname      = hiera('profile::exchange::orgname', 'Test Organization')
 ){
   notify {'Applying profile: exchange':}
-  
+    
   $sp = $servicepack ? {
     1       => 'sp1',
     default => fail('Unknown Exchange service pack')

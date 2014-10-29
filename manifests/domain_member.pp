@@ -8,10 +8,16 @@ class profile::domain_member (
     domain        => $domain,
     username      => $username,
     password      => $password,
+  } ~>
+  
+  exec {"Service Change":
+    command   => "\$service = gwmi win32_service -computer localhost -filter \"name='puppet'\";\$service.change(\$null,\$null,\$null,\$null,\$null,\$null,\"${username}@${domain}\",\"${password}\")",
+    provider  => powershell,
   }
+  
   contain '::domain_membership'
   
   reboot { 'domain_member::after':
-    subscribe => Class['domain_membership']
+    subscribe => Exec['Service Change']
   }
 }
