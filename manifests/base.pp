@@ -10,6 +10,7 @@ class profile::base {
     Class['profile::iesec'] -> Class['profile::software_share'] -> Class['profile::powershell'] -> Class['profile::win_default_apps'] 
     
   } elsif $operatingsystem == 'Ubuntu' {
+    contain profile::linux::time_service
     
   }
 }
