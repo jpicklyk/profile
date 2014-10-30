@@ -14,4 +14,5 @@ class profile::dns (
     zonename      => $zonename,
     dynamicupdate => $dynamicupdate,
   }
+  contain windows_dns
 }
