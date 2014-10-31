@@ -4,6 +4,9 @@ class profile::linux::adminuser(
   $group       = heira('profile::linux::adminuser::$group')
 ){
   
+  validate_string($username)
+  validate_string($group)
+  
   notify {'creating the admin group!':}
   
   group {$group:

@@ -15,5 +15,5 @@ class profile::base {
     contain profile::linux::adminuser
     }
     
-  }
 }
+
