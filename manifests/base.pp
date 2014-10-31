@@ -12,6 +12,8 @@ class profile::base {
   } elsif $operatingsystem == 'Ubuntu' {
     notify {'Doing stuff for ubuntu!':}
     contain profile::linux::time_service
+    contain profile::linux::adminuser
+    }
     
   }
 }
