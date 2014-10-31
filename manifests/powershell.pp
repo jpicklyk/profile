@@ -15,7 +15,7 @@ class profile::powershell(
     
     class{'windowsps':
       version => $version,
-      required => Reboot['before powershell']
+      require => Reboot['before powershell']
     }
     contain ::windowsps
     
