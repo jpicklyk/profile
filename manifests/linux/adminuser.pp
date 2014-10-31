@@ -1,7 +1,7 @@
 class profile::linux::adminuser(
-  $username     = heira('profile::linux::adminuser::$username'),
-  $adminpass    = heira('profile::linux::adminuser::$adminpass'),
-  $group       = heira('profile::linux::adminuser::$group')
+  $username     = hiera('profile::linux::adminuser::$username'),
+  $adminpass    = hiera('profile::linux::adminuser::$adminpass'),
+  $group       = hiera('profile::linux::adminuser::$group')
 ){
   
   validate_string($username)
