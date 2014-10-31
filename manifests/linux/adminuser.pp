@@ -21,7 +21,4 @@ class profile::linux::adminuser(
     shell => "bin/bash"
     }
     
-  }
-  
-  
 }
