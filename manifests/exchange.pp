@@ -1,5 +1,4 @@
-class profile::exchange::unified(
-  $exrole       = hiera('profile::exchange::exrole'),
+class profile::exchange (
   $share        = hiera('profile::exchange::share'),
   $version      = hiera('profile::exchange::version', '2010'),
   $servicepack  = hiera('profile::exchange::servicepack', 1),
@@ -12,17 +11,12 @@ class profile::exchange::unified(
     default => fail('Unknown Exchange service pack')
   }
   
-  
-  class { 'exchange::prerequisites':
-    exrole    => $exrole,
-    directory => "${share}${version}\\",
-  } ->
-    
-  class {'exchange::install':
-    exrole    => $exrole,
-    path      => "${share}${version}\\${sp}\\",
-    orgname   => $orgname,
-  }
-  contain exchange::prerequisites  
-  contain exchange::install
+  class {'::exchange':
+    exchange_dir      => "${share}\\${version}\\${sp}",
+    prereq_dir        => "${share}\\${version}",
+    role              => $::exchange_role,
+    organization_name => 'My Test Org',
+    version           => $version,
+  }  
+  contain ::exchange
 }
