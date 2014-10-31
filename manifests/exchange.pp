@@ -5,7 +5,7 @@ class profile::exchange(
   $servicepack  = hiera('profile::exchange::servicepack', 1),
   $orgname      = hiera('profile::exchange::orgname', 'Test Organization')
 ){
-  notify {'Applying profile: exchange':}
+  debug('Applying profile: exchange')
     
   $sp = $servicepack ? {
     1       => 'sp1',
