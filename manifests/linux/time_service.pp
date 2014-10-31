@@ -3,7 +3,7 @@ class profile::linux::time_service(
   $user       = hiera('profile::linux::time_service::user')  
 ) {
   
-  debug ('Applying NTP Service')
+  notify {'Applying NTP Service':}
   validate_absolute_path($foldername)
   validate_string($user)
   
