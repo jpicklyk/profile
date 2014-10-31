@@ -18,7 +18,7 @@ class profile::linux::adminuser(
   user{ $username:
     ensure => present,
     groups => $group,
-    shell => "bin/bash"
+    shell => "/bin/bash"
     }
     
 }
