@@ -1,8 +1,6 @@
 class profile::base {
   notify {'Applying profile: base':}
-  #Run the shutdown profile for every OS.
-  contain profile::shutdown
-  
+    
   if $operatingsystem == 'Windows' {
     contain profile::iesec
     #contain windows_puppet
